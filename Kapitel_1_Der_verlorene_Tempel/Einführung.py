@@ -1,7 +1,10 @@
-from colorama import Fore, Style
+from colorama import Fore
+import os
+from Kapitel_1_Der_verlorene_Tempel.Kambodscha import Kambodscha as Kapitel_1_Kambodscha
+
 inventory = ['']
-cell_phone = Fore.LIGHTCYAN_EX + 'Telefon' + Style.RESET_ALL
-pr_goldenbark = Fore.BLUE + 'Goldenbark' + Style.RESET_ALL
+cell_phone = Fore.LIGHTCYAN_EX + 'Telefon' + Fore.RESET
+pr_goldenbark = Fore.BLUE + 'Goldenbark' + Fore.RESET
 
 
 class Introduction:
@@ -16,8 +19,9 @@ class Introduction:
 
     def introduction(self):
         self.current_chapter = 'Introduction'
-        print(Fore.GREEN + '-----Kapitel 1: Der verlorene Tempel-----' + Style.RESET_ALL)
+        print(Fore.GREEN + '-----Kapitel 1: Der verlorene Tempel-----' + Fore.RESET)
         print()
+        print(Fore.LIGHTGREEN_EX + '-----Einführung-----' + Fore.RESET)
         print(f'Du wachst früh am Morgen durch ein Geräusch auf.\n'
               f'[{cell_phone}] Ring, Ring\n'
               f'[{self.player_name}] "Hallo?"\n'
@@ -48,16 +52,24 @@ class Introduction:
               f'[{pr_goldenbark}] "JA! Es soll angeblich heilen können. Alten Schriften aus Konstantinopel zufolge, soll es sogar der Königin"\n'
               f'[{pr_goldenbark}] "das Leben gerettet haben, indem es sie von einer Pfeilverletzung geheilt hat."\n'
               f'[{self.player_name}] "Wo soll es sich denn überhaupt befinden?\n'
-              f'[{pr_goldenbark}] "Da beginnt es knifflig zu werden. Angeblich hat ein Stamm von eingeborenen, welche im Dschungel von Kambodscha"\n'
+              f'[{pr_goldenbark}] "Da beginnt es knifflig zu werden. Angeblich hat ein Stamm von Eingeborenen, welche im Dschungel von Kambodscha"\n'
               f'[{pr_goldenbark}] "leben, der Königin das Amulett gestohlen und in einem Ihrer Tempel versteckt. Niemand weis, wo sich der Stamm"\n'
               f'[{pr_goldenbark}] "heute aufhaltet. Sie existieren noch heute, jedoch misstrauen sie jedem, welcher nicht von ihrem Stamm ist."\n'
               f'[{self.player_name}] "Also soll ich herausfinden, wo sich der Stamm befindet, um zu erfahren, wo der Tempel ist oder?"\n'
               f'[{pr_goldenbark}] "Ja. Es gibt jemanden, welcher behauptete zu wissen wo sich der Stamm gerade befindet."\n'
-              f'[{pr_goldenbark}] "Ich habe ihn gefunden und er hat mir eine Karte gezeichnet und meinte, dass das ihr letzter aufenthaltsort war."\n'
-              f'[{pr_goldenbark}] "Bitte folge der Karte und finde heraus, wo sich das Artefakt befindet und bringe es zu mir."\n'
+              f'[{pr_goldenbark}] "Ich habe ihn gefunden und er hat mir eine Wegbeschreibung geschrieben und meinte,"\n'
+              f'[{pr_goldenbark}] "dass das ihr letzter aufenthaltsort war."')
+        path = os.path.join(os.path.dirname(__file__), 'Die Wegbeschreibung.jpg')
+        os.startfile(path)
+        print(f'[{pr_goldenbark}] "Bitte folge der Wegbeschreibung und finde heraus, wo sich das Artefakt befindet und bringe es zu mir."\n'
               f'[{self.player_name}] "Na gut. Ich mache mich auf die Suche nach dem Artefakt."\n'
               f'[{pr_goldenbark}] "Vielen dank. Natürlich komme ich für alle Kosten auf. Ich hoffe Sie haben erfolg."\n'
-              f'[{self.player_name}] "Auf wiedersehen Professor. Ich rufe Sie ann, falls ich etwas herausfinde."\n'
+              f'[{self.player_name}] "Auf wiedersehen Professor. Ich rufe Sie an, falls ich etwas herausfinde."\n'
               f'[{pr_goldenbark}] "Super. Auf wiedersehen."\n'
               f'Du verlässt das Büro und machst dich auf den Weg zu deinem Hotelzimmer.\n'
-              f'Am nächsten Morgen Fliegst du mit dem Flieger nach Konstantinopel.')
+              f'Am nächsten Morgen Fliegst du mit dem Flieger nach Kambodscha.')
+        input('> ')
+        print()
+        print(Fore.GREEN + 'Abschnitt 1: Kambodscha' + Fore.RESET)
+        kapitel = Kapitel_1_Kambodscha(player_name=self.player_name)
+        kapitel.stonehill()
